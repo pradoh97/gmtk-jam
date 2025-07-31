@@ -4,36 +4,48 @@ using UnityEngine;
 
 public class SizeController : MonoBehaviour
 {
-    public float timeScale;
     public float secondsBeforeSizeChange;
-    
+
+    [Header("Scale sizes")]
+    public float scaleMultiplier1;
+    public float scaleMultiplier2;
+    public float scaleMultiplier3;
+
+    private float timeTranscurred;
     private int scaleState;
+
+    void goToNextScaleState(int nextState)
+    {
+        if (timeTranscurred > secondsBeforeSizeChange)
+        {
+            scaleState = nextState;
+            timeTranscurred = 0;
+        }
+    }
+
+    [Tooltip("make sure this remains the same number as the scale in the unity editor")] public Vector3 defaultScale = new Vector3(0.2f, 0.3f, 0.2f);
     private void FixedUpdate()
     {
-        if (timeScale > secondsBeforeSizeChange)
+        switch(scaleState)
         {
-            scaleState = 1;
-            transform.localScale = new Vector3(0.3f, 0.45f, 0.3f);
+            case 0:
+                transform.localScale = defaultScale * scaleMultiplier1;
+                goToNextScaleState(1);
+                break;
+            case 1:
+                transform.localScale = defaultScale * scaleMultiplier2;
+                goToNextScaleState(2);
+                break;
+            case 2:
+                transform.localScale = defaultScale * scaleMultiplier3;
+                goToNextScaleState(0);
+                break;
+            default:
+                break;
         }
-        if(timeScale < 0)
-        {
-            scaleState = 2;
-            transform.localScale = new Vector3(0.1f, 0.15f, 0.1f);
-        }
-
-
-        if(scaleState == 1)
-        {
-            timeScale -= Time.deltaTime;
-        }
-        else if(scaleState == 2)
-        {
-            timeScale += Time.deltaTime;
-        }
-        else
-        {
-            timeScale += Time.deltaTime;
-        }
-
+    }
+    private void LateUpdate()
+    {
+        timeTranscurred += Time.deltaTime;
     }
 }
