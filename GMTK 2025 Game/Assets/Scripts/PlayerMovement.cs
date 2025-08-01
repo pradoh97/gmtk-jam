@@ -14,10 +14,11 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("necessary stuff")]
     public Rigidbody2D rb;
+    public Collider2D groundDetection;
+
     private float jumpTime;
     private bool jumping;
     private bool jumpCancelled;
-    private float groundCheckDistance = 0.2f;
     public bool isGrounded;
 
     void Jumping()
@@ -44,20 +45,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 jumping = false;
             }
-        }
-
-        //check ground
-        float characterHeight = 6f * transform.localScale.y; //Makes the start point of the ray not the center of the character
-        Vector3 CharactersFeet = new Vector3(transform.position.x, transform.position.y - characterHeight, transform.position.z);
-
-        Debug.DrawRay(CharactersFeet, Vector2.down * groundCheckDistance, Color.red);
-        if (Physics2D.Raycast(CharactersFeet, Vector2.down, groundCheckDistance))
-        {
-            isGrounded = true;
-        }
-        else
-        {
-            isGrounded = false;
         }
     }
     void leftRightMovement()
