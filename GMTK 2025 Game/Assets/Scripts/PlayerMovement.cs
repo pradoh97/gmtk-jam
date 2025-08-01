@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("necessary stuff")]
     public Rigidbody2D rb;
     public Collider2D groundDetection;
+    public static bool iveBeenDestroyed;
 
     private float jumpTime;
     private bool jumping;
@@ -75,5 +76,18 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(Vector2.down * jumpCancelRate);
         }
+    }
+    private void OnDestroy()
+    {
+        iveBeenDestroyed = true;
+    }
+    private void Start()
+    {
+        StartCoroutine(waitAFrameBeforeUpdatingVar());
+    }
+    IEnumerator waitAFrameBeforeUpdatingVar()
+    {
+        yield return new WaitForSeconds(Time.deltaTime);
+        iveBeenDestroyed = false;
     }
 }
