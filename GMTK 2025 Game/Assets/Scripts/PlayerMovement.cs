@@ -27,11 +27,11 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             float jumpForce = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y * rb.gravityScale/2));
-            rb.AddForce(new Vector2(0, jumpForce * transform.localScale.x), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
 
             jumping = true;
             jumpCancelled = false;
-            jumpTime = 0;
+            jumpTime = 0;	
         }
 
         if (jumping)

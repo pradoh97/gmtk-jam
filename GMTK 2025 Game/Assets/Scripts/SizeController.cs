@@ -9,7 +9,7 @@ public class SizeController : MonoBehaviour
     [Header("Scale sizes")]
     public float scaleMultiplier1;
     public float scaleMultiplier2;
-    public float scaleMultiplier3;
+   
 
     private float timeTranscurred;
     private int scaleState;
@@ -34,10 +34,6 @@ public class SizeController : MonoBehaviour
                 break;
             case 1:
                 transform.localScale = defaultScale * scaleMultiplier2;
-                goToNextScaleState(2);
-                break;
-            case 2:
-                transform.localScale = defaultScale * scaleMultiplier3;
                 goToNextScaleState(0);
                 break;
             default:

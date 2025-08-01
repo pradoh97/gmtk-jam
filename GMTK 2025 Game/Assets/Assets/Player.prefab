@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -3, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2638059586842448196}
@@ -102,9 +102,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpButtonHoldTime: 1
-  jumpHeight: 600
-  jumpCancelRate: 500
-  characterSpeed: 200
+  jumpHeight: 25
+  jumpCancelRate: 15
+  characterSpeed: 125
   rb: {fileID: 4870790936087473191}
   groundDetection: {fileID: 0}
   isGrounded: 0
@@ -120,10 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f9074ab0388047488774296fce120af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsBeforeSizeChange: 5
-  scaleMultiplier1: 1
+  secondsBeforeSizeChange: 2
+  scaleMultiplier1: 0.5
   scaleMultiplier2: 2
-  scaleMultiplier3: 0.5
   defaultScale: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!50 &4870790936087473191
 Rigidbody2D:
@@ -184,8 +183,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.064659715, y: -0.53456664}
-  m_Size: {x: 6.6117806, y: 6.48082}
+  m_Offset: {x: 0.04187584, y: -0.52}
+  m_Size: {x: 6.68, y: 0.0001}
   m_Direction: 0
 --- !u!1 &6413977300832485907
 GameObject:
@@ -214,9 +213,9 @@ Transform:
   m_GameObject: {fileID: 6413977300832485907}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.383, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: -0.03, y: -3.37, z: 0}
+  m_LocalScale: {x: 5.248989, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4764892415543645991}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
