@@ -78,11 +78,12 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Jumping();
-        leftRightMovement();
+
     }
 
     private void FixedUpdate()
     {
+        leftRightMovement();
         if (jumpCancelled && jumping && rb.velocity.y > 0)
         {
             rb.AddForce(Vector2.down * jumpCancelRate);
