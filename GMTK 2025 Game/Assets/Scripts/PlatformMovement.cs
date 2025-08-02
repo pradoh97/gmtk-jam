@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlatformMovement : MonoBehaviour
 {
-    [Tooltip("False = Horizontal. True = Vertical")] public bool horizontalOrVertical;
+    [Tooltip("False = Horizontal. True = Vertical")] public bool verticalMovement;
     public float distanceToTravel;
     public float timeToLoop;
 
@@ -37,7 +37,7 @@ public class PlatformMovement : MonoBehaviour
 
 
 
-        if (!horizontalOrVertical)
+        if (!verticalMovement)
         {
             transform.position = Vector3.Lerp(initialPos, new Vector3(initialPos.x + distanceToTravel, initialPos.y, initialPos.z), time / timeToLoop);
         }
