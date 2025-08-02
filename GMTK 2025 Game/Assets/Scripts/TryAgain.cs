@@ -17,6 +17,7 @@ public class TryAgain : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+    	GameObject.FindWithTag("RespawnZone").transform.position= new Vector3(-14,3,0);
         Destroy(player);
         DeathZone.createNewPlayer = true;
         winScreen.SetActive(false);
