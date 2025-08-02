@@ -17,32 +17,27 @@ public class PlayerMovement : MonoBehaviour
     public Collider2D groundDetection;
     public static bool iveBeenDestroyed;
 
-    private float jumpTime;
     private bool jumping;
     private bool jumpCancelled;
     public bool isGrounded;
 
     void Jumping()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !jumping)
         {
-            float jumpForce = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y * rb.gravityScale/2));
-            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-
+            rb.AddForce(Vector2.up * (jumpHeight * 100));
             jumping = true;
             jumpCancelled = false;
-            jumpTime = 0;	
         }
 
         if (jumping)
         {
-            jumpTime += Time.deltaTime;
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 jumpCancelled = true;
             }
 
-            if (jumpTime > jumpButtonHoldTime)
+            if (isGrounded)
             {
                 jumping = false;
             }

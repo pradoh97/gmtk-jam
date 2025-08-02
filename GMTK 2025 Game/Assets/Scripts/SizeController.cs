@@ -9,7 +9,9 @@ public class SizeController : MonoBehaviour
     [Header("Scale sizes")]
     public float scaleMultiplier1;
     public float scaleMultiplier2;
-   
+    public float jumpMultiplier1;
+    public float jumpMultiplier2;
+
 
     private float timeTranscurred;
     private int scaleState;
@@ -30,10 +32,12 @@ public class SizeController : MonoBehaviour
         {
             case 0:
                 transform.localScale = defaultScale * scaleMultiplier1;
+                gameObject.GetComponent<PlayerMovement>().jumpHeight = jumpMultiplier1;
                 goToNextScaleState(1);
                 break;
             case 1:
                 transform.localScale = defaultScale * scaleMultiplier2;
+                gameObject.GetComponent<PlayerMovement>().jumpHeight = jumpMultiplier2;
                 goToNextScaleState(0);
                 break;
             default:
