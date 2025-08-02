@@ -5,8 +5,7 @@ using UnityEngine;
 public class DeathZone : MonoBehaviour
 {
     private GameObject respawnZone; //please only use one per level
-    public GameObject player;
-
+    public static bool createNewPlayer;
     private void Start()
     {
         respawnZone = GameObject.FindWithTag("RespawnZone");
@@ -16,7 +15,7 @@ public class DeathZone : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             Destroy(collision.gameObject);
-            Instantiate(player, respawnZone.transform.position, Quaternion.identity);
+            createNewPlayer = true;
         }
     }
 }
